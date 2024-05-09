@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ildeberto_website/my_picture.dart';
@@ -20,9 +22,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var size = const Size(0, 0);
   final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.sizeOf(context);
     return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
@@ -152,10 +156,13 @@ class _MyAppState extends State<MyApp> {
                                 ),
                               ),
                               Container(
-                                width: 600,
+                                width: size.width * 0.4,
                                 decoration: const BoxDecoration(
                                   gradient: LinearGradient(
-                                    colors: [ Color(0xfffaaca8),Color(0xff734f96),],
+                                    colors: [
+                                      Color(0xfffaaca8),
+                                      Color(0xff734f96),
+                                    ],
                                     stops: [0, 1],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
@@ -164,9 +171,12 @@ class _MyAppState extends State<MyApp> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(20.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
+                                      const SizedBox(
+                                        height: 30,
+                                      ),
                                       Text(
                                         "My Journey",
                                         textAlign: TextAlign.left,
@@ -176,45 +186,77 @@ class _MyAppState extends State<MyApp> {
                                       const Divider(
                                         endIndent: 300,
                                       ),
-                                      GridView(
-                                        shrinkWrap: true,
-                                        gridDelegate:
-                                            const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 150),
-                                        children: [
-                                          for (Experience exp in experiences)
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      width: 1,
-                                                      height: 25,
-                                                      color: Colors.deepOrange,
+                                      const SizedBox(height: 30,),
+                                      Container(
+                                        width: size.width*0.3,
+                                        child: Wrap(
+                                          spacing: 40,
+                                          alignment: WrapAlignment.spaceAround,
+                                          direction: Axis.horizontal,
+                                          children: [
+                                            for (Experience exp in experiences)
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        width: 1,
+                                                        height: 25,
+                                                        color: Colors.orange,
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Text(
+                                                        exp.companyName,
+                                                        style: GoogleFonts.poppins(
+                                                            fontSize: 22,
+                                                            letterSpacing: 1,
+                                                            fontWeight: FontWeight.w600,
+                                                            color: Colors.white),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Text(
+                                                    exp.position,
+                                                    style: GoogleFonts.poppins(
+                                                      fontSize: 14,
+                                                      color: Colors.white.withOpacity(0.7),
                                                     ),
-                                                    Text(
-                                                      exp.companyName,
-                                                      style: GoogleFonts.poppins(
-                                                          fontSize: 20,
-                                                          fontWeight: FontWeight.bold,
-                                                          color: Colors.white),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Text(
-                                                  exp.position,
-                                                  style: GoogleFonts.poppins(fontSize: 16, color: Colors.white.withOpacity(0.7),),
-                                                ),
-                                              ],
-                                            )
-                                        ],
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.date_range,
+                                                        color: Colors.white,
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text(
+                                                        exp.date,
+                                                        style: GoogleFonts.poppins(
+                                                          fontSize: 14,
+                                                          color: Colors.white.withOpacity(0.7),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              )
+                                          ],
+                                        ),
                                       )
                                     ],
                                   ),
                                 ),
                               ),
                               Container(
-                                width: 500,
+                                width: 600,
                                 decoration: const BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [Color(0xff734f96), Color(0xffc779d0)],
@@ -225,6 +267,41 @@ class _MyAppState extends State<MyApp> {
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                   ),
+                                ),
+                                child: StaggeredGrid.count(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 4,
+                                  children:  [
+                                    StaggeredGridTile.count(
+                                      crossAxisCellCount: 2,
+                                      mainAxisCellCount: 2,
+                                      child: Image.asset("assets/images/njila.png")
+                                    ),
+                                    StaggeredGridTile.count(
+                                      crossAxisCellCount: 2,
+                                      mainAxisCellCount: 1,
+                                        child: Image.asset("assets/images/Socia Port.jpg")
+
+                                    ),
+                                    StaggeredGridTile.count(
+                                      crossAxisCellCount: 1,
+                                      mainAxisCellCount: 1,
+                                        child: Image.asset("assets/images/roque.jpg")
+
+                                    ),
+                                    StaggeredGridTile.count(
+                                      crossAxisCellCount: 1,
+                                      mainAxisCellCount: 1,
+                                        child: Image.asset("assets/images/NjilaTrack.jpg")
+
+                                    ),
+                                    StaggeredGridTile.count(
+                                      crossAxisCellCount: 4,
+                                      mainAxisCellCount: 2,
+                                        child: Image.asset("assets/images/Agrofarms.jpg")
+
+                                    ),
+                                  ],
                                 ),
                               ),
                               Container(

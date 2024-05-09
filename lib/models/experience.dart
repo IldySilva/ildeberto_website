@@ -11,9 +11,14 @@ class Experience {
 }
   List<Experience> experiences = [
     Experience(
-      companyName: "IS4-Solutions",
+      companyName: "Equilibrium",
+      position: "Flutter Developer",
+      date: "2022-2024",
+    ),
+    Experience(
+      companyName: "IS4-S",
       position: "Mobile & Backend Developer",
-      date: "2022-Present",
+      date: "2022-2024",
     ),
     Experience(
       companyName: "KiamiSoft",
@@ -25,16 +30,8 @@ class Experience {
       position: "Mobile Developer | Ui Designer",
       date: "2021-2022",
     ),
-    Experience(
-      companyName: "Infinity Tech",
-      position: "Flutter Developer",
-      date: "2021-2022",
-    ),
-    Experience(
-      companyName: "Freelancer",
-      position: "Music Producer | Beatmaker",
-      date: "2016-present",
-    ),
+
+
   ];
 
 
