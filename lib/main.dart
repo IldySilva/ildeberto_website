@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textButtonTheme:
               TextButtonThemeData(style: TextButton.styleFrom(textStyle: const TextStyle(color: Colors.white))),
@@ -50,7 +50,6 @@ class _MyAppState extends State<MyApp> {
                       child:
                           CustomScrollView(controller: _scrollController, scrollDirection: Axis.horizontal, slivers: [
                         SliverPersistentHeader(pinned: true, floating: false, delegate: SliverPicture()),
-
                         SliverList.list(
                           children: [
                             Container(
@@ -186,4 +185,3 @@ class _MyAppState extends State<MyApp> {
         ));
   }
 }
-

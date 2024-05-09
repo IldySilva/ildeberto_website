@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SliverPicture extends SliverPersistentHeaderDelegate {
   @override
-  double get minExtent => 100;
+  double get minExtent => 80;
   @override
   double get maxExtent => 320;
 
@@ -19,69 +19,58 @@ class SliverPicture extends SliverPersistentHeaderDelegate {
           opacity: const AlwaysStoppedAnimation<double>(1),
           child: Stack(
             children: [
-              Container(
-                width: 320,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/picture.jpg"),
-                    fit: BoxFit.fitHeight,
-
-                  ),
-
-                ),
-
-              ),
               ClipRRect(
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                   child: Container(
-                    decoration: const BoxDecoration(color: Colors.black87),
+                    decoration: const BoxDecoration(color: Colors.black),
                     width: 320,
+                    child:  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [ IconButton(
+                            hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                            onPressed: () {},
+                            icon: const Icon(
+                              FontAwesomeIcons.github,
+                            )),
+                          IconButton(
+                              hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.stackOverflow,
+                              )),
+                          IconButton(
+                              hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.linkedin,
+                              )),
+                          IconButton(
+                              hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.twitter,
+                              )),
+                          IconButton(
+                              hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.medium,
+                              )),
+                          IconButton(
+                              hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.youtube,
+                              )),],),
+                    )
                   ),
                 ),
               ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [ IconButton(
-              hoverColor: const Color(0xfff05053).withOpacity(0.6),
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.github,
-              )),
-          IconButton(
-              hoverColor: const Color(0xfff05053).withOpacity(0.6),
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.stackOverflow,
-              )),
-          IconButton(
-              hoverColor: const Color(0xfff05053).withOpacity(0.6),
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.linkedin,
-              )),
-          IconButton(
-              hoverColor: const Color(0xfff05053).withOpacity(0.6),
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.twitter,
-              )),
-          IconButton(
-              hoverColor: const Color(0xfff05053).withOpacity(0.6),
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.medium,
-              )),
-          IconButton(
-              hoverColor: const Color(0xfff05053).withOpacity(0.6),
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.youtube,
-              )),],),
-        )
+
 
             ],
           ),
