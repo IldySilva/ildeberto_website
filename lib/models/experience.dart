@@ -13,11 +13,11 @@ class Experience {
     Experience(
       companyName: "Equilibrium",
       position: "Flutter Developer",
-      date: "2022-2024",
+      date: "2022-present",
     ),
     Experience(
       companyName: "IS4-S",
-      position: "Mobile & Backend Developer",
+      position: "Flutter & Backend Developer",
       date: "2022-2024",
     ),
     Experience(
@@ -27,7 +27,7 @@ class Experience {
     ),
     Experience(
       companyName: "INOKRI",
-      position: "Mobile Developer | Ui Designer",
+      position: "Flutter Developer",
       date: "2021-2022",
     ),
 
