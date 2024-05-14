@@ -20,9 +20,17 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   var size = const Size(0, 0);
   final ScrollController _scrollController = ScrollController();
+  late TabController tabController;
+
+  @override
+  void initState() {
+    tabController = TabController(length: 5, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.sizeOf(context);
@@ -280,45 +288,60 @@ class _MyAppState extends State<MyApp> {
                                     const SizedBox(
                                       height: 30,
                                     ),
-                                    Text(
-                                      "Creative Portfolio",
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 50, color: Colors.white, fontWeight: FontWeight.bold),
+                                    Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Center(
+                                        child: Text(
+                                          "Creative Portfolio",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 35, color: Colors.white, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
                                     ),
                                     Theme(
                                       data: ThemeData(
-                                          textButtonTheme: TextButtonThemeData(
-                                              style: TextButton.styleFrom(
-                                                  textStyle:
-                                                      TextStyle(color: Colors.white, fontWeight: FontWeight.bold)))),
-                                      child: Row(
+                                          tabBarTheme: const TabBarTheme(
+                                        labelColor: Colors.white,
+                                        unselectedLabelColor: Colors.white70,
+                                      )),
+                                      child: TabBar(
+                                          isScrollable: true,
+                                          controller: tabController,
+                                          tabs: const [
+                                            Tab(
+                                              text: 'All',
+                                            ),
+                                            Tab(
+                                              text: 'Articles',
+                                            ),
+                                            Tab(
+                                              text: 'Animations',
+                                            ),
+                                            Tab(
+                                              text: 'Videos',
+                                            ),
+                                            Tab(
+                                              text: 'Example Apps',
+                                            ),
+                                          ]),
+                                    ),
+                                    Expanded(
+                                      child: TabBarView(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        controller: tabController,
                                         children: [
-                                          TextButton(
-                                            child: const Text("All"),
-                                            onPressed: () {},
-                                          ),
-                                          TextButton(
-                                            child: const Text("Articles"),
-                                            onPressed: () {},
-                                          ),
-                                          TextButton(
-                                            child: const Text("Animations"),
-                                            onPressed: () {},
-                                          ),
-                                          TextButton(
-                                            child: const Text("Videos"),
-                                            onPressed: () {},
-                                          ),
-                                          TextButton(
-                                            child: const Text("Example Apps"),
-                                            onPressed: () {},
-                                          ),
+                                      
+                                          Container(color: Colors.white10,),
+                                          Container(color: Colors.white30,),
+
+                                          Container(color: Colors.blueGrey.shade50,),
+                                          Container(color: Colors.purple.shade50,),
+                                          Container(color: Colors.white10,),
+
+
                                         ],
                                       ),
-                                    ),
-                                    const Divider(
-                                      endIndent: 300,
                                     ),
                                     const SizedBox(
                                       height: 30,
