@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     size = MediaQuery.sizeOf(context);
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Ildeberto - Software Engineer',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textButtonTheme:
