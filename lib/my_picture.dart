@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SliverPicture extends SliverPersistentHeaderDelegate {
   @override
-  double get minExtent => 80;
+  double get minExtent => 130;
   @override
   double get maxExtent => 320;
 
@@ -30,7 +30,15 @@ class SliverPicture extends SliverPersistentHeaderDelegate {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [ IconButton(
+                        children: [
+
+                          IconButton(
+                              hoverColor: const Color(0xfff05053).withOpacity(0.6),
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.house,
+                              )),
+                          IconButton(
                             hoverColor: const Color(0xfff05053).withOpacity(0.6),
                             onPressed: () {},
                             icon: const Icon(
@@ -81,7 +89,7 @@ class SliverPicture extends SliverPersistentHeaderDelegate {
           child: Stack(
             children: [
               Container(
-                width: 320,
+                width: 360,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/picture.jpg"),
@@ -90,7 +98,7 @@ class SliverPicture extends SliverPersistentHeaderDelegate {
                 ),
               ),
               Container(
-                width: 320,
+                width: 360,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [const Color(0xffe1eec3).withOpacity(0.2), const Color(0xfff05053).withOpacity(0.2)],
